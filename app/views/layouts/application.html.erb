@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>School</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="" c="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style type="text/css">
+      
+      body{
+        background-color: #d1e2ff;
+      }
+     /* ul>li>a:hover {
+        background-color: yellow;
+      }*/
+      .nav-link.active{
+        background-color: black;
+      }
+    </style>      
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" style="color:black" href="#">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link <%= params[:controller] == "students" ? 'active': ''%>" href="/students">Students</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= params[:controller] == "friends" ? 'active': ''%>" href="/friends">Friends</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= params[:controller] == "products" ? 'active': ''%>" href="/products">Products</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= params[:controller] == "favorites" ? 'active': ''%>" href="/favorites">favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= params[:controller] == "blogs" ? 'active': ''%>" href="/blogs">Blogs</a>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/sign_out">Sign out</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/sign_in">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/sign_up" >Register</a>
+            </li>
+          <% end %> 
+        </ul>   
+      </div>
+    </nav> 
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "student_id"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "friend_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.string "fastname"
+    t.string "lastname"
+    t.string "email"
+    t.string "gender"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  ...........
+  product === Friend
+  Review === Comment 
+
+  ............
+
+  1. Write Models - Make Tables 
+  $ rails g model Product name:string 
+  $ rails g model Review product_id:integer 
+
+
+  2. Write Controllers 
+
+
+  3. 

@@ -1,0 +1,78 @@
+
+<div class="row">
+  <h1>Student Record</h1>
+  <div class="ragister">
+    Name  :      <%= @student.name %><br>
+    Email  :     <%= @student.email %><br>
+    RollNumber : <%= @student.rollno %><br>
+    Gender  :    <%= @student.gender %><br>
+    City  :      <%= @student.city %><br>
+    address :    <%= @student.address %><br>
+    Start_date : <%= @student.start_date %><br>
+    end_date :   <%= @student.end_date %><br>
+
+    <div>
+      <%= link_to "Edit this student", edit_student_path(@student) %><br>
+      <%= link_to "Back to students", students_path %>
+      <br>
+    
+      <%= link_to "Destroy this student", student_destroy_path(@student), method: :delete%>
+    </div>
+
+
+    <h2>Comments</h2>
+	<% @student.comments.where.not(title: [nil, ""]).order("id DESC").first(2).each do |comment| %>
+
+	  <p>
+	    <strong>Comment:</strong>
+	    <%= comment.title %>
+	  </p>
+	<% end %>
+
+
+    <%= form_tag '/create', :method => 'post' do %>
+			<%= hidden_field_tag "student_id" ,nil, value:  @student.id %>
+			<p>
+		    <%= text_field_tag :title %>
+		    <%= submit_tag "Comment", :name => nil %>
+		  </p> 
+	<% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<style >
+	body{
+		background-color: red;
+	}
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.row{
+		width: 438px;
+		height: auto;
+				
+		background-color: white;
+		margin-left: 30%;
+
+	}
+	h1{
+		text-align: center;
+		color: rgba(204, 43, 43, 0.8)
+
+	}
+	.ragister{
+		color: blue;
+		margin-left: 60px;
+		
+		font-size:22px;
+	}
+</style>

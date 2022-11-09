@@ -1,0 +1,51 @@
+<body>
+    <div class="row">
+        <h1>Student Record</h1>
+        <div class="ragister">
+              Name  :      <%= @bhanu.name%><br>
+              Email  :     <%= @bhanu.email%><br>
+              RollNumber : <%= @bhanu.rollno%><br>
+              Gender  :    <%= @bhanu.gender%><br>
+              City  :      <%= @bhanu.city %><br>
+              address :    <%= @bhanu.address %><br>
+              start_date : <%= @bhanu.start_date %><br>
+              end_date :   <%= @bhanu.end_date %><br>
+        
+              <div>
+                <%= link_to "Edit this student", edit_student_path(@bhanu) %><br>
+                <%= link_to "Back to students", students_path %>
+                <br>
+              
+                <%#= link_to "Destroy this student", student_path(@bhanu), method: :delete%>
+                <%= link_to 'Destroy', student_destroy_path(@bhanu), method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+        </div>
+    </div>
+    
+</body>
+<style >
+	body{
+		background-color: red;
+	}
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.row{
+				
+		background-color: white;
+		margin-left: 30%;
+
+	}
+	h1{
+		text-align: center;
+		color: rgba(204, 43, 43, 0.8)
+
+	}
+	.ragister{
+		color: blue;
+		margin-left: 60px;
+		
+		font-size:22px;
+	}
+</style>

@@ -1,0 +1,29 @@
+
+<section class="vh-100" style="background-color: #508bfc;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+             <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+                  <%= render "devise/shared/error_messages", resource: resource %>        
+                  <h4>Forgot your password ?</h4>
+                  <div class="form-outline mb-4"> 
+                  <label class="form-label" for="form2Example11">Useremail</label>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" ,placeholder: "Enter your Email" %>
+                    <%= f.submit "Send me reset password instructions" %>
+                  </div>
+                  <div class="text-center pt-1 mb-5 pb-1">
+                    <%= render "devise/shared/links" %>
+                    <a class="text-muted" href="#!">Forgot password?</a>                   
+                  </div>           
+                <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

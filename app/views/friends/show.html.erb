@@ -1,0 +1,78 @@
+
+<div class="row">
+  <h1>friend Record</h1>
+  <div class="ragister">
+    First_name  :           <%= @friend.first_name%><br>
+    Lastname  :     <%= @friend.last_name %><br>
+    Email :           <%= @friend.email %><br>
+    Gender  :          <%= @friend.gender %><br>
+    Phone_no:          <%= @friend.phone_no%>
+    <div>
+      <%= link_to "Edit this friend", edit_friend_path(@friend) %><br>
+      <%= link_to "Back to friends", friends_path %>
+      <br>
+    
+      <%= button_to "Destroy this friend", @friend, method: :delete%>
+    </div>
+
+ <h2>Comments</h2>
+	<% @friend.comments.where.not(title: [nil, ""]).order("id DESC").first(2).each do |comment| %>
+
+	  <p>
+	    <strong>Comment:</strong>
+	    <%= comment.title %>
+	  </p>
+	  <% if comment.present? %>
+		<a href="/comments/<%= comment.id%>">delete</a>
+	  <% end %>
+	<% end %>
+
+
+    <%= form_tag '/create', :method => 'post' do %>
+			<%= hidden_field_tag "friend_id" ,nil, value:  @friend.id %>
+			<p><br>	
+		    <%= text_field_tag :title %>
+		    <%= submit_tag "Comment", :name => nil,class: "btn btn-outline-dark" %>
+		  </p> 
+	<% end %>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<style >
+	body{
+		background-color: red;
+	}
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	.row{
+		width: 410px;
+		height: auto;
+				
+		background-color: white;
+		margin-left: 30%;
+
+	}
+	h1{
+		text-align: center;
+		color: rgba(204, 43, 43, 0.8)
+
+	}
+	.ragister{
+		color: blue;
+		margin-left: 60px;
+		
+		font-size:22px;
+	}
+</style>

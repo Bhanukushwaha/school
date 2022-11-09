@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nsmr: MyString
+  discription: MyText
+  image: MyString
+  prise: 1.5
+
+two:
+  nsmr: MyString
+  discription: MyText
+  image: MyString
+  prise: 1.5
